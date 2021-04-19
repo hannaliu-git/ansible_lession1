@@ -2,5 +2,17 @@
 192.168.30.92
 192.168.30.202
 
-[all:vars]
-ansible_become_password=d3l0ngh!
+[web_servers]
+192.168.30.91 apache_package=apache2 php_package=libapache2-mod-php
+
+[db_servers]
+192.168.30.92 apache_package=apache2 php_package=libapache2-mod-php
+
+[file_servers]
+192.168.30.202 apache_package=httpd php_package=php
+
+#[all:vars]
+#ansible_become_password=d3l0ngh!
+
+#[workstations]
+#192.168.30.90

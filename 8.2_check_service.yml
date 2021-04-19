@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: true
+
+  tasks:
+
+  - name: Start service mariadb if not started
+    become: yes
+    service:
+      name: mariadb
+      state: started
+
+
+  - name: check status of mariadb service
+    service_facts:
+    register: service_state
+  - debug:
+      var: service_state.ansible_facts.services["mariadb.service"].state
+
