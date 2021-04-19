@@ -1,0 +1,20 @@
+---
+- hosts: all
+  become: true
+
+  tasks:
+
+  - name: Start HTTP service if not started
+    become: yes
+    service:
+      name: http
+      state: started
+    when: ansible_distribution == "Fedora"
+
+
+  - name: check status of httpd service
+    service_facts:
+    register: service_state
+  - debug:
+      var: service_state.ansible_facts.services["httpd.service"].state
+
