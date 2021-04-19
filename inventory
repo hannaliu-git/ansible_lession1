@@ -1,2 +1,5 @@
 192.168.30.91
 192.168.30.92
+
+[all:vars]
+ansible_become_password=d3l0ngh!
